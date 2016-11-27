@@ -1,0 +1,73 @@
+@CHARSET "EUC-KR";
+
+.formtable {
+	width: 600px;
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin: 30px;
+}
+
+.inputTable{
+	background-color: whitesmoke;
+	width: 300px;
+	height: 70px;
+	border: 1px solid black;
+	margin: 30px;
+	padding: 20px;
+}
+
+.title {
+	background-color: lightblue;
+	border: 1px solid black;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.label {
+	text-align: right;
+	vertical align: center;
+	border: 1px solid black;
+	text-align: center;
+}
+
+.inputLabel {
+	border: 1px solid whitesmoke;
+	vertical align: center;
+	text-align: center;
+}
+
+.totalCredits {
+	text-align: right;
+	vertical align: center;
+	border: 1px solid black;
+	text-align: center;
+	font-weight: bold;
+	color: red;
+}
+
+.control {
+	margin-left: 20px;
+}
+
+.detailLink{
+	font-color: red;
+	vertical align: center;
+	border: 1px solid black;
+	text-align: center;
+}
+
+.h{
+	color: blue;
+}
+
+.result{
+	color: red;
+}
+
+.errorMsg{
+	border: 1px solid whitesmoke;
+	width: 300px;
+	text-align: center;
+	color: red;
+}
