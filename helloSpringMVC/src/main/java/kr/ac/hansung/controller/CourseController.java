@@ -1,6 +1,5 @@
 package kr.ac.hansung.controller;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,15 +7,11 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.filter.CharacterEncodingFilter;
 
 import kr.ac.hansung.model.Course;
 import kr.ac.hansung.service.CourseService;
@@ -25,6 +20,7 @@ import kr.ac.hansung.service.CourseService;
 @Controller
 public class CourseController {
 
+	private ArrayList<Course> courseInfoList_2017_1 = new ArrayList<Course>();
 	private HashMap<String, Course> courseInfo_2017_1 = new HashMap<String, Course>();
 	private ArrayList<String> registeredCode_2017_1 = new ArrayList<String>();
 	private CourseService courseService;
@@ -75,17 +71,18 @@ public class CourseController {
 
 	@RequestMapping("/registerForCourse")
 	public String registerForCourse(Model model) {
+		// return Empty instance to save user input text
+		// model.addAttribute(new Course());
+		intoList();
+		intoHashMap();
 		
+		model.addAttribute("courseInfoList", courseInfoList_2017_1);
 		model.addAttribute(new Course());
-		
 		return "registerForCourse";
 	}
 
 	@RequestMapping("/doRegister")
 	public String doRegister(Model model, @Valid Course course, BindingResult result) {
-		// return Empty instance to save user input text
-		// model.addAttribute(new Course());
-
 		if (result.hasErrors()) {
 			System.out.println("Form data does not validate");
 			List<ObjectError> errors = result.getAllErrors();
@@ -94,8 +91,7 @@ public class CourseController {
 			}
 			return "registerForCourse";
 		}
-
-		intoHashMap();
+		
 		String reqCode = course.getCode();
 
 		if (courseInfo_2017_1.containsKey(reqCode)) {
@@ -125,23 +121,29 @@ public class CourseController {
 		model.addAttribute("registrationDetails", registrationDetails);
 		return "registrationDetails";
 	}
+	
+	public void intoList(){
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0051", "DB시스템구현", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0039",  "IOS프로그래밍2", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0052", "SW설계및테스트", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0055", "고급DB설계", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0054", "고급SW설계", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0044", "디지털콘텐츠기획및제작", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0043", "빅데이터프로그래밍", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0053", "사용자어플리케이션구현", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0050", "서버시스템구현", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0041", "안드로이드프로그래밍2", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0037", "오픈소스소프트웨어", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0042", "웹프레임워크2", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0038", "정보보안", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0040", "컴파일러", "전선", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0036", "캡스톤디자인2", "전지", 3));
+		courseInfoList_2017_1.add(new Course(2017, 1, "CSE0056", "캡스톤디자인3", "전지", 3));
+	}
 
 	public void intoHashMap() {
-		courseInfo_2017_1.put("CSE0051", new Course(2017, 1, "DB시스템구현", "전선", 3));
-		courseInfo_2017_1.put("CSE0039", new Course(2017, 1, "IOS프로그래밍2", "전선", 3));
-		courseInfo_2017_1.put("CSE0052", new Course(2017, 1, "SW설계및테스트", "전선", 3));
-		courseInfo_2017_1.put("CSE0055", new Course(2017, 1, "고급DB설계", "전선", 3));
-		courseInfo_2017_1.put("CSE0054", new Course(2017, 1, "고급SW설계", "전선", 3));
-		courseInfo_2017_1.put("CSE0044", new Course(2017, 1, "디지털콘텐츠기획및제작", "전선", 3));
-		courseInfo_2017_1.put("CSE0043", new Course(2017, 1, "빅데이터프로그래밍", "전선", 3));
-		courseInfo_2017_1.put("CSE0053", new Course(2017, 1, "사용자어플리케이션구현", "전선", 3));
-		courseInfo_2017_1.put("CSE0050", new Course(2017, 1, "서버시스템구현", "전선", 3));
-		courseInfo_2017_1.put("CSE0041", new Course(2017, 1, "안드로이드프로그래밍2", "전선", 3));
-		courseInfo_2017_1.put("CSE0037", new Course(2017, 1, "오픈소스소프트웨어", "전선", 3));
-		courseInfo_2017_1.put("CSE0042", new Course(2017, 1, "웹프레임워크2", "전선", 3));
-		courseInfo_2017_1.put("CSE0038", new Course(2017, 1, "정보보안", "전선", 3));
-		courseInfo_2017_1.put("CSE0040", new Course(2017, 1, "컴파일러", "전선", 3));
-		courseInfo_2017_1.put("CSE0036", new Course(2017, 1, "캡스톤디자인2", "전지", 4));
-		courseInfo_2017_1.put("CSE0056", new Course(2017, 1, "캡스톤디자인3", "전지", 4));
+		for(int i=0; i<courseInfoList_2017_1.size(); i++){
+			courseInfo_2017_1.put(courseInfoList_2017_1.get(i).getCode(), courseInfoList_2017_1.get(i));
+		}
 	}
 }

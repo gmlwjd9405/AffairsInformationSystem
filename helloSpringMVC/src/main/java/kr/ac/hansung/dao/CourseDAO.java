@@ -28,7 +28,7 @@ public class CourseDAO {
 		return jdbcTemplateObject.queryForObject(sqlStatement, Integer.class);
 	}
 
-	// the tltal number of records per semester
+	// the total number of records per semester
 	public int getSumCredit() {
 		String sqlStatement = "select sum(credit) from course";
 		return jdbcTemplateObject.queryForObject(sqlStatement, Integer.class);

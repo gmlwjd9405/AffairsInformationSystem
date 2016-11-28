@@ -45,22 +45,18 @@ td {
 			<td class="title">division</td>
 			<td class="title">credit</td>
 		</tr>
-			<tr><td>2017</td><td>1</td><td>CSE0051</td><td>DB시스템구현</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0039</td><td>IOS프로그래밍2</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0052</td><td>SW설계및테스트</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0055</td><td>고급DB설계</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0054</td><td>고급SW설계</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0044</td><td>디지털콘텐츠기획및제작</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0043</td><td>빅데이터프로그래밍</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0053</td><td>사용자어플리케이션구현</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0050</td><td>서버시스템구현</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0041</td><td>안드로이드프로그래밍2</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0037</td><td>오픈소스소프트웨어</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0042</td><td>웹프레임워크2</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0038</td><td>정보보안</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0040</td><td>컴파일러</td><td>전선</td><td>3</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0036</td><td>캡스톤디자인2</td><td>전지</td><td>4</td></tr>
-			<tr><td>2017</td><td>1</td><td>CSE0056</td><td>캡스톤디자인3</td><td>전지</td><td>4</td></tr>
+		<c:forEach var="courseInfoList" items="${courseInfoList}">
+			<tr>
+				<td class="label"><c:out value="${courseInfoList.year}"></c:out></td>
+				<td class="label"><c:out value="${courseInfoList.semester}"></c:out></td>
+				<td class="label"><c:out value="${courseInfoList.code}"></c:out></td>
+				<td class="label"><c:out value="${courseInfoList.subject}"></c:out></td>
+				<td class="label"><c:out value="${courseInfoList.division}"></c:out></td>
+				<td class="label"><c:out value="${courseInfoList.credit}"></c:out></td>
+			</tr>
+		</c:forEach>
+			
+			
 		</table>
 		
 	</sf:form>
